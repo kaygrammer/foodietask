@@ -1,1 +1,1 @@
-web: gunicorn foodaskapp.wsgi --log-file -
+web: gunicorn foodaskapp.wsgi
