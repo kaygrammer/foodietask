@@ -1,9 +1,10 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_view
 
 urlpatterns = [
+    #web view-restaurant
     path('', views.home, name='home'),
     path('restaurant/', views.restaurant_home, name='restaurant_home'),
 
@@ -11,4 +12,8 @@ urlpatterns = [
     path('restaurant/sign_out', auth_view.LogoutView.as_view(next_page='/'), name='restaurant_sign_out'),
     path('restaurant/sign_up', views.restaurant_sign_up, name='restaurant_sign_up'),
 
+
+#APIs
+
+    #path('api/social/', include('rest_framework_social_oauth2.urls')),
 ]

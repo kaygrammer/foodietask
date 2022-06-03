@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ed3gggy%&#1j@4&97i8ex*((pi!^u6r*(p_$$dyi1+_v$231nt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['motifapp.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['motifapp.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coreapp',
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
 ]
 
 MIDDLEWARE = [
@@ -60,10 +63,13 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -118,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
@@ -140,5 +146,23 @@ cloudinary.config(
   api_key="273973674485469",
   api_secret="jsH2e0gUqzmOf93-qct3_ZhP6fc"
 )
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookAppOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
 
+    # django-rest-framework-social-oauth2
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
 
+    # Django
+    'django.contrib.auth.backends.ModelBackend',
+)
+# Facebook configuration
+SOCIAL_AUTH_FACEBOOK_KEY = '1096334780950005'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f8c717029bea1a73435c98719477d6c6'
+
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from Facebook.
+# Email is not sent by default, to get it, you must request the email permission.
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type(large)'
+}
