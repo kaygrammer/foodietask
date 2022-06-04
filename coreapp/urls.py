@@ -12,6 +12,11 @@ urlpatterns = [
     path('restaurant/sign_out', auth_view.LogoutView.as_view(next_page='/'), name='restaurant_sign_out'),
     path('restaurant/sign_up', views.restaurant_sign_up, name='restaurant_sign_up'),
 
+    path('restaurant/account', views.restaurant_account, name='restaurant_account'),
+    path('restaurant/order', views.restaurant_order, name='restaurant_order'),
+    path('restaurant/meal', views.restaurant_meal, name='restaurant_meal'),
+    path('restaurant/report', views.restaurant_report, name='restaurant_report'),
+
 
 #APIs
 

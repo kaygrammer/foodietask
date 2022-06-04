@@ -14,7 +14,7 @@ def restaurant_home(request):
     context = {}
     return render(request, 'restaurant/home.html', context)
 
-
+@login_required(login_url='/restaurant/sign_in')
 def restaurant_sign_up(request):
     user_form = UserForm()
     restaurant_form = RestaurantForm()
@@ -37,3 +37,23 @@ def restaurant_sign_up(request):
 
     context = {'user_form': user_form, 'restaurant_form': restaurant_form}
     return render(request, 'restaurant/sign_up.html', context)
+
+@login_required(login_url='/restaurant/sign_in')
+def restaurant_account(request):
+    context = {}
+    return render(request, 'restaurant/account.html', context)
+
+@login_required(login_url='/restaurant/sign_in')
+def restaurant_meal(request):
+    context = {}
+    return render(request, 'restaurant/meal.html', context)
+
+@login_required(login_url='/restaurant/sign_in')
+def restaurant_order(request):
+    context = {}
+    return render(request, 'restaurant/order.html', context)
+
+@login_required(login_url='/restaurant/sign_in')
+def restaurant_report(request):
+    context = {}
+    return render(request, 'restaurant/report.html', context)

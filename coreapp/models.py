@@ -17,7 +17,7 @@ class Restaurant(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='customer')
-    avater = models.CharField(max_length=225, blank=True)
+    avatar = models.CharField(max_length=225, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
 
@@ -27,7 +27,7 @@ class Customer(models.Model):
 
 class Driver(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='driver')
-    avater = models.CharField(max_length=225, blank=True)
+    avatar = models.CharField(max_length=225, blank=True)
     phone = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     car_model = models.CharField(max_length=225, blank=True)
