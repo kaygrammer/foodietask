@@ -1,20 +1,28 @@
 {% extends 'restaurant/base_auth.html' %}
+{% load bootstrap4 %}
 
 {% block title %}
 Sign In
 {%endblock%}
 
 {% block heading %}
-Restaurant-Sign in
+Restaurant Sign in
 {% endblock %}
 
 {% block content %}
 
 <form action="" method="post">
     {% csrf_token %}
-    {{form}}
-    <button type="submit">sign in</button>
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-black btn-block">sign in</button>
+    <hr>
+    <div class="text-center" mt-3>
+        <a href="{% url 'restaurant_sign_up'%}">Become a Restaurant</a>
+    </div>
+
 </form>
+
+
 
 {% endblock %}
 
