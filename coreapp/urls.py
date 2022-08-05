@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from . import views
+from . import views, apis
 from django.contrib.auth import views as auth_view
 
 urlpatterns = [
@@ -20,10 +20,18 @@ urlpatterns = [
     path('restaurant/meal', views.restaurant_meal, name='restaurant_meal'),
     path('restaurant/meal/add', views.restaurant_meal_add, name='restaurant_meal_add'),
     path('restaurant/meal/edit/<int:meal_id>', views.restaurant_meal_edit, name='restaurant_meal_edit'),
+
     #report
     path('restaurant/report', views.restaurant_report, name='restaurant_report'),
 
     # APIs
+    #path('api/social/', include('rest_framework_social_oauth2.urls')),
 
-    # path('api/social/', include('rest_framework_social_oauth2.urls')),
+
+    # APIS for customers
+    path('api/customer/restaurants', apis.customer_get_restaurants),
+    path('api/customer/meals/<int:restaurant_id>', apis.customer_get_meals),
+    path('api/customer/order/add/', apis.customer_add_order),
+    path('api/customer/order/latest/', apis.customer_get_latest_order),
+
 ]
