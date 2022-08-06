@@ -1,4 +1,13 @@
 {% extends 'restaurant/layout.html' %}
+{% block script %}
+<script>
+    $(document).ready(function) {
+    var now = new Date();
+    setInterval(function() {
+    $.ajax({
+    url: ''}) }
+</script>
+{% endblock%}
 
 {% block sidebar %}
 
@@ -21,7 +30,9 @@
     <a href="{% url 'restaurant_meal' %}"
        class="list-group-item {% if request.path == restaurant_meal_url %} active {%endif%}">Meal</a>
     <a href="{% url 'restaurant_order' %}"
-       class="list-group-item {% if request.path == restaurant_order_url %} active {%endif%}">Order</a>
+       class="list-group-item {% if request.path == restaurant_order_url %} active {%endif%}">Order
+    <span class="badge badge-warning ml-2"></span>
+    </a>
     <a href="{% url 'restaurant_report' %}"
        class="list-group-item {% if request.path == restaurant_report_url %} active {%endif%}">Report</a>
     

@@ -21,6 +21,9 @@ urlpatterns = [
     path('restaurant/meal/add', views.restaurant_meal_add, name='restaurant_meal_add'),
     path('restaurant/meal/edit/<int:meal_id>', views.restaurant_meal_edit, name='restaurant_meal_edit'),
 
+    #Notification api
+    path('api/restaurant/order/notification/<last_request_time>', apis.restaurant_order_notification),
+
     #report
     path('restaurant/report', views.restaurant_report, name='restaurant_report'),
 
